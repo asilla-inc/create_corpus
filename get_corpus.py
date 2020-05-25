@@ -2,7 +2,6 @@ from bs4 import BeautifulSoup
 import requests
 import random
 import os
-import pandas as pd
 from time import sleep
 import words_to_search
 
@@ -59,8 +58,13 @@ for key in list(param_dict):
     for param in param_dict[key]:
         url = base + param
         headers = {'User-Agent':'Mozilla/5.0'}
-        res = requests.get(url, headers=headers)
-        res.encoding = res.apparent_encoding
+        try:
+            res = requests.get(url, headers=headers, timeout=5)
+            res.encoding = res.apparent_encoding
+        except Exception as e:
+            print(e)
+            continue
+
         soup = BeautifulSoup(res.text, 'html.parser')
         words = soup.find_all('tt')
         for word in words:
