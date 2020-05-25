@@ -37,12 +37,12 @@ def gen_template(spacing):
 def simple_table(spacing, data_full, des_path):
     num_page = round(len(data_full)/columns*rows)
     print("pages", num_page)
-    for i in range(num_page+1):
+    for i in range(num_page):
         print(f"====Page {i+1}=====")
         pdf = FPDF()
         font_name = '0_Meiryo-01'
         pdf.add_page()
-        pdf.add_font(font_name, '', './fonts/0_Meiryo-01.ttf', uni=True)
+        pdf.add_font(font_name, '', f'./fonts/{font_name}.ttf', uni=True)
         pdf.set_font(font_name, size=10)
         cell_width = pdf.w / 3.9
         cell_height = 10
@@ -86,15 +86,22 @@ def simple_table(spacing, data_full, des_path):
 if __name__ == '__main__':
     #add_font(FONT_FOLDER)
     # base_path = './numbers'
-    des_path = './hello'
+    des_path = './number'
     if not os.path.isdir(des_path):
         os.makedirs(des_path)
     #gen_template(1)
     # for filename in os.listdir(base_path):
-    file_link = "./numbers.txt"
+    # file_link = "./numbers.txt"
         
-    all_lines = read_txt(file_link)
-    random.shuffle(all_lines)
-    print("data ", len(all_lines))   
-    simple_table(1, all_lines, des_path)
+    # data = read_txt(file_link)
+    data = []
+    for i in range(3000):
+        generated_float = round(random.uniform(1,99), 1)
+        if i < 2500:
+            data.append(str(generated_float))
+        else:
+            data.append(str(-generated_float))
+    random.shuffle(data)
+    print("data", len(data))
+    simple_table(1, data, des_path)
         
