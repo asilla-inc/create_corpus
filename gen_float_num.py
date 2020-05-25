@@ -1,9 +1,9 @@
 import random
 
-for i in range(650):
+for i in range(200):
     integer = random.randint(1,99)
     floating = random.randint(1,9)
 
-    text = f"{integer}.{floating}\n"
+    text = f"-{integer}.{floating}\n"
     with open('numbers.txt', 'a') as file:
         file.writelines(text)
