@@ -1,0 +1,9 @@
+.DS_Store
+*.zip
+*.pdf
+address/
+currency/
+numberonly_float/
+numberonly_fraction/
+annotation_train.txt
+chromedriver
