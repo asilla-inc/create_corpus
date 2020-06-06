@@ -86,7 +86,7 @@ def simple_table(spacing, data_full, des_path):
 if __name__ == '__main__':
     #add_font(FONT_FOLDER)
     # base_path = './numbers'
-    des_path = './number'
+    des_path = './number_bloodpressure'
     if not os.path.isdir(des_path):
         os.makedirs(des_path)
     #gen_template(1)
@@ -96,11 +96,14 @@ if __name__ == '__main__':
     # data = read_txt(file_link)
     data = []
     for i in range(3000):
-        generated_float = round(random.uniform(1,99), 1)
-        if i < 2500:
-            data.append(str(generated_float))
-        else:
-            data.append(str(-generated_float))
+        # generated_float = round(random.uniform(1,99), 1)
+        bloodpressure_high = random.randint(90, 180)
+        bloodpressure_low = random.randint(40,110)
+        data.append(f'{bloodpressure_high}/{bloodpressure_low}')
+        # if i < 2500:
+        #     data.append(str(generated_float))
+        # else:
+        #     data.append(str(-generated_float))
     random.shuffle(data)
     print("data", len(data))
     simple_table(1, data, des_path)
