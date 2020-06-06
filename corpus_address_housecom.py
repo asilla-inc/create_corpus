@@ -24,39 +24,7 @@ def make_soup(url):
     result.encoding = result.apparent_encoding
     return BeautifulSoup(result.text, 'html.parser')
 
-lines = [
-    '/kanagawa/tokaidoshinkansen-line/station/',
-    '/kanagawa/shiyonanshinjiyukurainutsunomiyayokosuka-line/station/',
-    '/kanagawa/shiyonanshinjiyukuraintakasakitokaido-line/station/',
-    '/kanagawa/yokohamashichikatetsublue-line/station/',
-    '/kanagawa/yokohamashieichikatetsugreenline-line/station/',
-    '/kanagawa/keiodentetsukeio-line/station/',
-    '/kanagawa/keiodentetsutakao-line/station/',
-    '/kanagawa/keiodentetsusagamihara-line/station/',
-    # '/kanagawa/keihinkiyukodentetsuhon-line/station/',
-    # '/kanagawa/keihinkiyukodentetsukurihama-line/station/',
-    # '/kanagawa/keihinkiyukodentetsukuko-line/station/',
-    # '/kanagawa/keihinkiyukodentetsuzushi-line/station/',
-    # '/kanagawa/keihinkiyukodentetsudaishi-line/station/',
-    # '/kanagawa/tokyutoyoko-line/station/',
-    # '/kanagawa/tokyudenentoshi-line/station/',
-    # '/kanagawa/tokyumeguro-line/station/',
-    # '/kanagawa/tokyuooimachi-line/station/',
-    # '/kanagawa/tokyukodomonokuni-line/station/',
-    # '/kanagawa/tokyutamagawa-line/station/',
-    # '/kanagawa/hakonetozantetsudo-line/station/',
-    # '/kanagawa/kanazawashisaidorain-line/station/',
-    # '/kanagawa/syonanmonorail-line/station/',
-    # '/kanagawa/enoshimadentetsu-line/station/',
-    # '/kanagawa/izuhakonetetsudodaiyuzan-line/station/',
-    # '/kanagawa/odakiyudentetsuodawara-line/station/',
-    # '/kanagawa/odakiyudentetsuenoshima-line/station/',
-    # '/kanagawa/odakiyudentetsutama-line/station/',
-    # '/kanagawa/sagamitetsudoizumino-line/station/',
-    # '/kanagawa/sagamitetsudohonsen-line/station/',
-    # '/kanagawa/yokohamakosokutetsudominatomirai-line/station/',
-    # '/kanagawa/soutetuyokohama-line/station/'
-]
+lines = []
 # for pref in prefs:
 #     soup = make_soup(pref)
 #     link_list = soup.find_all(class_='j_enabled')

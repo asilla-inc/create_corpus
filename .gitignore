@@ -8,3 +8,4 @@ numberonly_float/
 numberonly_fraction/
 annotation_train.txt
 chromedriver
+*.log
