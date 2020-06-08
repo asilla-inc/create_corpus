@@ -59,19 +59,19 @@ for line in lines:
             pass
     sleep(5)
 
-# addresses = []
-# for station in stations:
-#     soup = make_soup(base_url+station)
-#     building_list = soup.find_all(class_='ListBukkenBox')
-#     for building in building_list:
-#         name = building.h3.a.text
-#         name = mojimoji.zen_to_han(name, kana=False)
-#         print(name)
-#         address = building.find(class_='MainDataInner')
-#         address = address.find_all('td')[0].text
-#         address = mojimoji.zen_to_han(address, kana=False)
-#         print(address)
-#         addresses.append(f'{address} {name}\n')
+addresses = []
+for station in stations:
+    soup = make_soup(base_url+station)
+    building_list = soup.find_all(class_='p-property__information margin-bottom_90')
+    for building in building_list:
+        name = building.h2.text
+        name = mojimoji.zen_to_han(name, kana=False)
+        print(name)
+        address = building.find(class_='p-property__information-hint')
+        address = address.text
+        address = mojimoji.zen_to_han(address, kana=False)
+        print(address)
+        addresses.append(f'{address} {name}\n')
     
 #     sleep(5)
 
