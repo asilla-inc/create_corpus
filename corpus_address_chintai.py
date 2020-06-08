@@ -12,6 +12,7 @@ prefs = [
 ]
 base_url = 'https://www.housecom.jp'
 base_url = 'https://www.athome.co.jp/chintai'
+base_url2 = 'https://www.athome.co.jp'
 
 chintai = {}
 
@@ -43,12 +44,15 @@ for pref in prefs:
 stations = []
 
 for line in lines:
-    link = f'{base_url}/{line}'
+    link = f'{base_url2}{line}'
+    print(link)
     soup = make_soup(link)
-    station_list = soup.find_all(id='station-list')
+    station_box = soup.find(id='station-list')
+    station_list = station_box.find_all('a')
+    print(station_list)
     for link in station_list:
         try:
-            station_url = link.a['href']
+            station_url = link['href']
             stations.append(station_url)
             print(station_url)
         except TypeError:
