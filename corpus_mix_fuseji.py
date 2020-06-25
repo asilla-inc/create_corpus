@@ -3,16 +3,22 @@ import requests
 import random
 import os
 from time import sleep
-import words_to_search
+import hung_20200618
 
 base = "http://fuseji.net/"
 maru = "○"
-param_lists = []
 param_dict = {}
 timeout = 5
-sleep_seconds = 6
+sleep_seconds = 3.5
+words = ['竺']
 
-for char in words_to_search.words2:
+with open('1_confuse-character.txt') as file:
+    lines = file.readlines()
+    lines = [line.strip('\n') for line in lines]
+    random.shuffle(lines)
+
+for line in lines:
+    char = line.split('=')[0]
     search_words = []
     search_words.append(maru+char)
     search_words.append(char+maru)
@@ -28,16 +34,18 @@ for char in words_to_search.words2:
             else:
                 search_words.append(shuffled)
     print(search_words)
-    param_lists.append({char: search_words})
+    if 'gt' in line:
+        char = char + '-gt'
+    else:
+        char = char + '-predict'
     param_dict[char] = search_words
 
-# print(param_dict)
 
 count = len(param_dict)
 # while len(os.listdir('./corpus_fuseji')) < 500:
 # for key in random.choice(list(param_dict)):
 
-existing = [word.split('.')[0].strip('corpus-fuseji-') for word in os.listdir('./corpus_fuseji')]
+existing = [word.split('.')[0].strip('corpus-fuseji-') for word in os.listdir('./corpus_fuseji_hung2')]
 
 for key in list(param_dict):
     count -= 1
@@ -58,9 +66,15 @@ for key in list(param_dict):
         soup = BeautifulSoup(res.text, 'html.parser')
         words = soup.find_all('tt')
         for word in words:
-            text = key + ' ' + word.text + '\n'
+            text = key.split('-')[0] + ' ' + word.text + '\n'
             print(word.text)
-            filename = f'./corpus_fuseji/corpus-fuseji-{key}.txt'
+            filename = f'./corpus_fuseji_hung2/corpus-fuseji-{key}.txt'
             with open(filename, 'a') as file:
                 file.writelines(text)
         sleep(sleep_seconds)
+        
+    # with open(f'./corpus_fuseji_hung2/corpus-fuseji-{key}.txt', 'r') as file:
+    #     lines = file.readlines()
+    
+    # os.rename(f'./corpus_fuseji_hung2/corpus-fuseji-{key}.txt', f'./corpus_fuseji_hung/corpus-fuseji-{key}-{len(lines)}.txt')
+            

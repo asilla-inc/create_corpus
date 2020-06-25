@@ -1,10 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 from time import sleep
-import selenium
 import json
+import selenium
 from selenium import webdriver
-from time import sleep
 from webdriver_manager.chrome import ChromeDriverManager
 
 

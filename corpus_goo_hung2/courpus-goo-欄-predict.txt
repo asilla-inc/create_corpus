@@ -1,0 +1,10 @@
+欄-predict 亜字欄
+欄-predict 筬欄間
+欄-predict 欄
+欄-predict 家庭欄
+欄-predict 擬宝珠高欄
+欄-predict 空欄
+欄-predict 櫛形欄間
+欄-predict 勾欄
+欄-predict 高欄
+欄-predict 小欄
